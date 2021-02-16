@@ -1,0 +1,429 @@
+---
+title: "Resolucão_exercicio1"
+author: "Ignazio Bechis"
+date: "04/12/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, collapse = TRUE)
+```
+
+>**Critérios de Avaliação**
+>
+> A lista vale 10 pontos. O peso de cada questão é 10/#questões.
+>
+> A entrega da lista deve seguir o [padrão](https://ead06.proj.ufsm.br/course/view.php?id=44385) de nomes dos arquivos conforme indicado no moodle. (Penalização de 0.5% do valor da lista)
+>
+> O arquivo Rmd deve ser identificado. (Penalização de 0.5% do valor da lista)
+>
+> A entrega em formato .Rmd era de incentivar a prática do R Markdown nos enunciados das questões. Por isso penalizou-se até 0.5% do valor da lista quando o aspecto da impressão no html diferiu muito do esperado (lista do livro).
+>
+> Os códigos são avaliados quanto as boas práticas recomendadas no [livro](https://lhmet.github.io/adar-ebook/boas-pr%C3%A1ticas-para-c%C3%B3digos-de-boa-qualidade.html). Penalização de até 5% do valor questão.
+>
+> Erros de digitação no texto são verificados, uma vez que foi mostrado no curso como evitá-los (ver [verificação ortográfica no RStudio](https://lhmet.github.io/adar-ebook/verifica%C3%A7%C3%A3o-ortogr%C3%A1fica.html)). Penalização de até 5% do valor questão. 
+>
+> Reprodutibilidade: o arquivo .Rmd deve rodar sem problemas e gerar o arquivo html com as respostas das questões. Penalização de até 5% do valor questão.
+>
+> Organização: a resolução das questões devem ser feitas no espaço reservado para ela, ou seja, logo abaixo do enunciado da referida questão no arquivo .Rmd.
+
+
+
+
+## Capitulo  5.6 exercicios 
+
+   1. Execute as seguintes expressões no R mostrando os resultados obtidos 
+
+```{r cars}
+1 + 1   
+100:130
+5 - +1
+3 %% 5 # esperava-se um comentário sobre a edição do conteúdo original (%)
+2 * 3
+4 - 1 
+6 / (4 - 1)
+```
+ 
+ >JDT: faltou linha horizontal divisória entre as questões, conforme pode ser verificado na lista do livro. Eu adicionei abaixo.
+ 
+```{r jdt-correcao1, echo = FALSE, comment="JDT>"}
+# penalizacoes
+p1 <- 0.01 + 0.05
+# nota questão 1
+(nq1 <- 1 - p1)
+```
+ 
+ - - - 
+ 
+ 
+   2. Utilize uma expressão para cada item 
+   
+       a. Escolha um número e some 3 a ele. 
+       b. Multiplique o resultado por 2.
+       c. Subtraia 10 da reposta.
+       d. Divida o que foi obtido por 4.
+
+```{r}
+num_esc <- 30
+# a. Escolha um número e some 3 a ele.
+resultado_a <- num_esc + 3
+resultado_a
+
+# b. Multiplique o resultado por 2.
+
+mult_resultado_a <- resultado_a * 2
+mult_resultado_a
+
+#  c. Subtraia 10 da reposta.
+sub_mult_resultado_a <- mult_resultado_a - 10
+sub_mult_resultado_a
+
+# d. Divida o que foi obtido por 4.
+calculo_final <- sub_mult_resultado_a / 4
+calculo_final
+```
+
+>Seria mais adequado criar uma variável somente para o número escolhido pois é a única coisa que poderia variar. As demais operações não variam, então para que nomeá-las?
+
+>JDT. Veja as boas práticas, nomes de variáveis devem ser objetivos (e curtos!). 
+
+```{r jdt-correcao2, echo = FALSE, comment="JDT>"}
+# penalizacoes
+p2 <- 0.01 + 0.05 
+# nota questão 2
+(nq2 <- 1 - p2)
+```
+
+   3. Calcule $\sqrt{16}, 16^{0.5^{3}}, (16^{0.5})^{3} e $4^{\frac{3}{2}}$ 
+
+```{r}
+sqrt(16)
+16^(0.5^3)
+(16^0.5)^3
+4^(3/2)
+
+```
+
+```{r jdt-correcao3, echo = FALSE, comment="JDT>"}
+# penalizacoes
+p3 <- 0
+# nota questão 1
+(nq3 <- 1 - p3)
+```
+
+   4. Teste as expressões 'log10(1000)', 'log(1000)', 'exp(log(1000))'. Depois teste a expressão 'log2(64)'. Verifique se você entendeu as diferentes funções logarítmicas.
+   
+```{r}
+ log10(1000)
+ log(1000)
+ exp(log(1000))
+ log2(64)
+# Quando não se especifica a base do logarítmico ele fica na base 10, um bom exemplo são as linhas 61 e 62 que são iguais porem um a base foi especificada no outro não   
+```
+
+>Respostas devem ser colocadas como texto não como comentários de código. Veja para que serve comentários em códigos nos links abaixo do livro:
+>
+https://lhmet.github.io/adar-ebook/r-no-modo-interativo.html#comentarios.
+>
+https://lhmet.github.io/adar-ebook/boas-pr%C3%A1ticas-para-c%C3%B3digos-de-boa-qualidade.html
+> log(x) é pré-definido como base **e** ou chamado logaritmo natural (ln). Seu comentário está errado. O que pode ser verificado com a expressão 2 e 3.
+
+```{r jdt-correcao4, echo = FALSE, comment="JDT>"}
+# penalizacoes
+p4 <- 0.25
+# nota questão 1
+(nq4 <- 1 - p4)
+```
+
+
+   5.Defina as variáveis abaixo tomando cuidados ao nomear as variáveis, conforme visto em sala de aula. Mostre os valores para as seguintes constantes:
+   
+   a.Velocidade da luz: $\nu = 2.998 \times 10^{8} \left [m\;s^{-1} \right]$
+   
+   b.Carga elementar ou eletrõnica: ${e} = 1.602\times 10^{-19} \left [C\right] $
+   
+> erro na impressão da equação acima.
+
+   c.Permissividade di vácuo: $\epsilon_{0} = 8.85\times 10^{-12}\left [C^{2}\ :N^{-1}\: m^{2} \right ]$
+   
+   d. Constante de Plank: ${h} = 6.626\times 10^{-34} \left [J\: s\right ]$
+   
+   e. Constante de Stefan Boltzman: $\sigma = 5.67\times 10^{-8} \left [W m^{-2} K^{-4} \right ]$
+   
+   f. Constante solar: ${S_{0}} = 1380 \left [W \: m^{-2} \right ]$
+   
+   g. Constante de Avogadro: ${N_{A}} = 6.022\times 10^{23} \left [mol^{-1} \right ]$
+   
+   h. Constante dos gases para ar seco: ${R_{d}} = 287.04 \left [J K{-1} \: kg^{-1} \right ]$ 
+   
+   i. Constante dos gases ideais para o vapor: ${R_{W}} = 461.5 \left [J K^{-1} \: kg^{-1} \right ]$
+   
+   j. Densidade do ar seco para CNTP (à 0 ° C em 1000 mb): $\rho = 1.2754 \left [kg \: m^{-3} \right ]$
+   
+   
+   k.Pressão média ao nível médio do mar para atmosfera padrão: ${P_{0}} = 1013.25 \left [mb \right ]$
+   
+   l.Temperatura ao nível médio do mar para atmosfera padrão: ${T_{0}} = 288.15 \left [K \right ]$
+   
+   m. Calor latente de vaporização ou condensação (à 0 °C): ${\lambda_{V}} = 2.501 \times 10^{6} \left [J \: kg{-1} \right ]$
+   
+> erro de digitação, correto é $\lambda_{v}$
+   
+   n. Calor latente de fusão (à 0 °C): ${\lambda _{f}} = 0.334 \times 10^{6} \left [ J \: kg^{-1} \right ]$
+   
+   o. Massa molecular da água: ${M {W}} = 18.016 \left [g\: mol^{-1} \right ]$
+
+> Erro: correto é $M_{w}$ 
+   
+   p. Peso molecular do ar: ${M{ar}} = 28.96 \left [ g\: mol^{-1} \right ]$
+   
+> Erro: correto é $M_{ar}$ 
+   
+   q. Raio da terra: ${r} = 6.37 \times 10^{6} \left [m \right ]$
+   
+   r. Velocidade angular da Terra: $\Omega = 7.29 \times 10^{-5} \left [rad\: s^{-1} \right ]$
+```{r} 
+# a.
+v <- 2.998E8
+v
+
+#b.
+e <- 1.62*10^-19
+e
+
+#c.
+perm_vac <- 8.85E-12
+perm_vac
+
+#D.
+c_planck <- 6.626E-34
+c_planck
+
+#E.
+c_ste_boltz <- 5.67E-8
+c_ste_boltz 
+
+#F.
+c_solar <- 1380
+c_solar 
+
+#G.
+c_avog <- 6.022E23
+c_avog 
+
+#H.
+rd <- 287.04
+rd 
+
+#I.
+rw <- 461.5
+rw 
+
+#J.
+rho <- 1.2754
+rho
+
+# K.
+pnmm <- 1013.25
+pnmm
+
+# L.
+tnmm <- 288.15
+tnmm
+
+# M.
+lambda_v <- 2.501E6
+lambda_v
+
+# N.
+lambda_f <- 0.334E6  
+lambda_f
+
+# O.
+mmolec_agua <- 18.016
+mmolec_agua
+
+# P.
+pmolec_ar <- 28.96
+pmolec_ar
+
+# Q.
+r <- 6.37E6
+r
+
+# R.
+vel_ang_t <- 7.29E-5
+vel_ang_t
+
+```
+
+```{r jdt-correcao5, echo = FALSE, comment="JDT>"}
+# penalizacoes
+p5 <- 4*0.02
+# nota questão 1
+(nq5 <- 1 - p5)
+```
+
+   6- (a) Como você pode fazer para que a constante pi seja mostrada com 20 dígitos? (b) Como voltar a trabalhar a com 7 dígitos novamente? c. Mostre o número neperiano com 7 dígitos.
+   
+```{r}    
+# (a). Para que a constante pi seja mostrado com 20 digitos, deve-se utilizar a função options(digits = 20)
+
+pi
+options(digits = 20)
+pi
+
+# (b). para diminuir as casas so ultilizar o comando anterior alterando para a quantidade de casas desejadas 
+
+options(digits = 7)
+pi
+# (c).
+getOption("digits")
+exp(1)
+
+```
+
+>JDT: Não confunda comentários de código com comentários da questão. Comentários de código não são para explicar a resolução da questão.
+
+```{r jdt-correcao6, echo = FALSE, comment="JDT>"}
+# penalizacoes
+p6 <- 0.05
+# nota questão 6
+(nq6 <- 1 - p6)
+```
+
+    7. Determine a temperatura de bulbo úmido (Tw) usando a expressão empírica (Stull, 2011) abaixo. Salve os resultados em variáveis diferentes. Para uma temperatura do ar (T) de 20°C e Umidade relativa (UR) de 70%, qual o valor de Tw? Defina variáveis para os valores T e UR e use-as na equação de Tw.Não é necessária a conversão dos dados expressos em % para aplicação na equação.
+    
+\begin{aligned}    
+T_{w}=T \cdot atan[0.151977 \cdot (UR+8.313659)^{1/2}]+\\
+atan(T+UR)-\\
+atan(UR-1.676331)+\\
+0.00391838(UR)^{3/2}\cdot atan(0.023101\cdot UR)-\\
+4.686035
+\end{aligned}
+
+```{r}
+  tar <- 20
+  ur_ar <- 70
+
+  #tw <- tar * atan(0.151977 * (ur_ar + (8.313659)^(1/2))) +
+  tw <- tar * atan(0.151977 * ((ur_ar + 8.313659)^(1/2))) + 
+         atan(tar + ur_ar) - atan(ur_ar - 1.676331) +
+        0.00391838 * (ur_ar)^(3/2) * atan(0.023101 * ur_ar) - 4.686035
+  tw
+  
+```
+>JDT: Erro no código. Compare a equação do livro com do seu código e verá que o
+parênteses da potência 1/2 está errado. Lembre que pode usar `sqrt()`.
+
+> Erro na identação do texto da questão, veja seu html e notará letra de código ao invés de letra de texto.
+
+```{r jdt-correcao7, echo = FALSE, comment="JDT>"}
+# penalizacoes
+p7 <- 1 
+# nota questão 1
+(nq7 <- 1 - p7)
+```
+
+8. Determine os valores de umidade do solo:
+      + no potencial hídrico de 10kPa (θ10kPa).
+      + na capacidade de campo (θ33kPa).
+      + no ponto de murcha permanente (θ1500kPa). 
+/ utilizando o conjunto de equações de pedotransferência abaixo (Tomasela et al. 2003):
+
+>JDT:  Faltou a inclusão da figura com as equações conforme lista no livro.
+> Não digitou letras gregas usando notação de equação. Repare que você não usou subscrito. As informações para fazer isso estão no Apêndice C do livro. 
+> '/' solta perdida no texto.
+
+
+```{r jdt-correcao8a, echo = FALSE, comment="JDT>"}
+# penalizacoes
+p8 <- 0.05 + 0.05
+```
+
+```{r}
+si <- 16.29
+cl <- 49.25
+db <- 1.25
+me <- 25
+
+x14 <- -1.05501 + 0.0650857 * si
+x15 <- -2.07588 + 0.0423954 * cl
+x16 <- -6.03402 + 4.80572 * db
+x17 <- -2.18409 + 8.84963 * (me / 100)
+z9 <- 0.175202 + 1.18513 * x17 - 0.0996042 * ((x17)^2) + 0.327915 * x16 - 0.0758657 * ((x16)^2)
+z10 <- 0.929344 * z9 + 0.132519 * x14
+
+#! potencial hídrico é diferente de umidade do solo (theta)!
+pot_hid10 <- 0.339255 + 0.112526 * z10
+pot_hid10
+
+#! z11 <- 0.191452 + 
+#!   1.25652 * x17 - 0.079098 *((x17)^2) # faltou +
+#!   0.393814 * x16 + 0.152095 * x17 * x16
+
+z11 <- 0.191452 + 
+  1.25652 * x17 - 0.079098 *((x17)^2) +
+  0.393814 * x16 + 0.152095 * x17 * x16
+  
+#cap_campo <- 0.28951 + 0103815 * z11
+cap_campo <- 0.28951 + 0.103815 * z11 
+cap_campo
+
+z13 <- 0.235084 + 0.33033 * x15 - 0.191838 * ((x15)^2) + 0.543679 * ((x15)^3) + 0.977685 * x17 + 0.304174 * x15 * x17 - 0.218857 * ((x17)^2) - 0.164373 * x15 * ((x17)^2) + 0.0415057 * ((x17)^3) + 0.373361 * x16 + 0.0811861 * x17 * x16 - 0.0768087 * x15 * x17 * x16
+
+murc_perman <- 0.214008 + 0.0862945 * z13
+murc_perman
+```
+> Erro de digitação ou atenção na fórmula da capacidade de campo e de z11. Ver comentário no código.
+
+
+```{r jdt-correcao8, echo = FALSE, comment="JDT>"}
+# penalizacoes
+p8 <- 0.33+ 0.05 # nomeou variável de potencial ao invés de umidade
+# nota questão 
+(nq8 <- 1 - p8)
+```
+
+
+
+9. Arredonde para 2 casas decimais **os resultados** da questão 8.Dica ver ?round.
+
+```{r}
+round(murc_perman, 2)
+
+#! não fechou chunck
+
+```
+
+> Note que a questão pede OS RESULTADOS (3).
+
+
+
+```{r jdt-correcao9, echo = FALSE, comment="JDT>"}
+# penalizacoes
+p9 <- 0.666
+# nota questão 1
+(nq9 <- 1 - p9)
+```
+
+>JDT: E o enunciado da questão 10? e o arquivo solucao-q10-NomeDoAluno.Rout? Você leu a atividade postada no moodle?
+
+
+```{r jdt-correcao10, echo = FALSE, comment="JDT>"}
+# penalizacoes
+p10 <- 0.8
+# nota questão 1
+(nq10 <- 1 - p10)
+```
+
+
+```{r jdt-nota-final, comment = "JDT>", echo=FALSE, eval = TRUE}
+# requer conexão de internet
+source("https://gist.githubusercontent.com/lhmet/3ddfc43bcf796c81ecfd9bb93f5f5dc2/raw/b489a6bb4d948472afa5068256b7869a7997e109/aux-funs-list-correction")
+coleta_notas
+# verificação de autoria
+nota <- round((sum(coleta_notas)/length(coleta_notas) * 10), 1)
+message("Nota: ", nota)
+
+```
